@@ -8,6 +8,8 @@ public class Audi extends Car {
     private String model;
     private int year;
 
+    private String manufacturer;
+
     public String getModel() {
         return model;
     }
@@ -22,5 +24,13 @@ public class Audi extends Car {
 
     public void setYear(int year) {
         this.year = year;
+    }
+    
+    public String getManufacturer() {
+        return manufacturer;
+    }
+
+    public void setManufacturer(String manufacturer) {
+        this.manufacturer = manufacturer;
     }
 }

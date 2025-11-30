@@ -15,7 +15,7 @@ public class Person {
 
     private String name;
 
-    //@ManyToOne
+    @ManyToOne
     private Car car;
 
     public Long getId() {
