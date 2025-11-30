@@ -1,11 +1,25 @@
 package me.aco.jpa_hibernate.entity;
 
+import org.hibernate.annotations.JdbcTypeCode;
+import org.hibernate.type.SqlTypes;
+
 import jakarta.persistence.Entity;
 
 @Entity
 public class Porsche extends Car {
 
-    String pModel;
+    private String pModel;
+
+    @JdbcTypeCode(SqlTypes.CHAR)
+    private boolean isTurbo;
+
+    public boolean isTurbo() {
+        return isTurbo;
+    }
+
+    public void setTurbo(boolean turbo) {
+        isTurbo = turbo;
+    }
 
     public String getpModel() {
         return pModel;

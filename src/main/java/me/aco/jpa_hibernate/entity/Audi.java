@@ -1,14 +1,16 @@
 package me.aco.jpa_hibernate.entity;
 
+import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
 
 @Entity
+//@DiscriminatorValue("AUDI")
 public class Audi extends Car {
 
     private String model;
     private int year;
 
-    private String manufacturer;
+    //private String manufacturer;
 
     public String getModel() {
         return model;
@@ -24,13 +26,5 @@ public class Audi extends Car {
 
     public void setYear(int year) {
         this.year = year;
-    }
-    
-    public String getManufacturer() {
-        return manufacturer;
-    }
-
-    public void setManufacturer(String manufacturer) {
-        this.manufacturer = manufacturer;
     }
 }
