@@ -1,16 +1,41 @@
 package me.aco.jpa_hibernate.entity2;
 
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Set;
+
+import jakarta.persistence.CollectionTable;
+import jakarta.persistence.Column;
+import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OrderColumn;
 
 @Entity
 public class A {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String name;
     private String description;
+
+    public List<String> list = new LinkedList<>();
+
+    @ElementCollection
+    @CollectionTable(name = "set_value", joinColumns = @JoinColumn(name = "a_id"))
+    public Set<String> set = new HashSet<>();
+
+    @ElementCollection
+    @CollectionTable(name = "list_value")
+    @OrderColumn(name="list_orderr")
+    public List<String> list1 = new LinkedList<>();
 
     private B b;
 
