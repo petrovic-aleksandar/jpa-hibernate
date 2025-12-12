@@ -8,9 +8,13 @@ import me.aco.jpa_hibernate.entity.Car;
 import me.aco.jpa_hibernate.entity.Person;
 import me.aco.jpa_hibernate.entity.Porsche;
 import me.aco.jpa_hibernate.entity2.A;
+import me.aco.jpa_hibernate.entity4.D;
+import me.aco.jpa_hibernate.entity4.D1;
 import me.aco.jpa_hibernate.repository.ARepository;
 import me.aco.jpa_hibernate.repository.AudiRepository;
 import me.aco.jpa_hibernate.repository.CarRepository;
+import me.aco.jpa_hibernate.repository.D1Repository;
+import me.aco.jpa_hibernate.repository.DRepository;
 import me.aco.jpa_hibernate.repository.PersonRepository;
 import me.aco.jpa_hibernate.repository.PorscheRepository;
 
@@ -22,13 +26,17 @@ public class TestRunner implements CommandLineRunner {
     private final CarRepository carRepository;
     private final PersonRepository personRepository;
     private final ARepository aRepository;
+    private final DRepository dRepository;
+    private final D1Repository d1Repository;
 
-    public TestRunner(AudiRepository audiRepository, PorscheRepository porscheRepository, CarRepository carRepository, PersonRepository personRepository, ARepository aRepository) {
+    public TestRunner(AudiRepository audiRepository, PorscheRepository porscheRepository, CarRepository carRepository, PersonRepository personRepository, ARepository aRepository, DRepository dRepository, D1Repository d1Repository) {
         this.audiRepository = audiRepository;
         this.porscheRepository = porscheRepository;
         this.carRepository = carRepository;
         this.personRepository = personRepository;
         this.aRepository = aRepository;
+        this.dRepository = dRepository;
+        this.d1Repository = d1Repository;
     }
 
     @Override
@@ -68,5 +76,19 @@ public class TestRunner implements CommandLineRunner {
         System.out.println("Saved Audi with ID: " + savedAudi.getId());
         System.out.println("Model: " + savedAudi.getModel());
         System.out.println("Year: " + savedAudi.getYear());
+
+        D d = new D();
+        D1 d1 = new D1();
+        d1 = d1Repository.save(d1);
+        D1 d1_1 = new D1();
+        d1_1 = d1Repository.save(d1_1);
+        //d.setD1(d1);    
+
+        D d_1 = new D();
+        d_1.setD1(d1);
+
+        D savedD = dRepository.save(d);
+        D savedD_1 = dRepository.save(d_1);
+
     }
 }
